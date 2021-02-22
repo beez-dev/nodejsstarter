@@ -1,4 +1,4 @@
-import bookshelf from '../db';
+const { bookshelf } = require('../db');
 
 const TABLE_NAME = 'todo';
 

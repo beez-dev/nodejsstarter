@@ -25,9 +25,8 @@ export function fetchAll(req, res, next) {
  */
 
 export function fetchByUserId(req, res, next) {
-  console.log(req.params.id);
   todoService
-    .getTodo(req.params.id)
+    .getTodo({ user_id: req.params.id })
     .then(data => res.json({ data }))
     .catch(err => next(err));
 }
@@ -56,6 +55,7 @@ export function create(req, res, next) {
  * @param {Function} next
  */
 export function update(req, res, next) {
+  console.log("updating todo");
   todoService
     .updateTodo(req.params.id, req.body)
     .then(data => res.json({ data }))
@@ -70,6 +70,7 @@ export function update(req, res, next) {
  * @param {Function} next
  */
 export function deleteTodo(req, res, next) {
+  console.log("delete service invoked: ");
   todoService
     .deleteTodo(req.params.id)
     .then(data => res.status(HttpStatus.NO_CONTENT).json({ data }))

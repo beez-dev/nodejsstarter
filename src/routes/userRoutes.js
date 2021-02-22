@@ -29,8 +29,6 @@ router.post('/login',authenticate,
     res.send('something');
 })
 
-
-
 /**
  * PUT /api/users/:id
  */

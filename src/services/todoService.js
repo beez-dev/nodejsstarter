@@ -19,7 +19,7 @@ export function getAllTodos() {
  * @returns {Promise}
  */
 export function getTodo(params) {
-  return new Todo({ params })
+  return Todo.where(params)
     .fetchAll()
     .then(todo => todo)
     .catch(Todo.NotFoundError, () => {
@@ -38,7 +38,7 @@ export function createTodo(todo) {
     task: todo.task,
     description: todo.description,
     user_id: todo.user_id
-  });
+  }).save();
 }
 
 
@@ -50,7 +50,7 @@ export function createTodo(todo) {
  * @returns {Promise}
  */
 export function updateTodo(id, todo) {
-  return new Todo({ id }).save({ task: todo.task, description: todo.description });
+  return new Todo( { id } ).save( { task: todo.task, description: todo.description } );
 }
 
 /**
@@ -60,5 +60,5 @@ export function updateTodo(id, todo) {
  * @returns {Promise}
  */
 export function deleteTodo(id) {
-  return new Todo({ id }).fetch().then(todo => todo.destroy());
+  return new Todo( { id } ).fetch().then( todo => todo.destroy() );
 }

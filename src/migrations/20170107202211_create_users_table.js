@@ -12,9 +12,10 @@ export function up(knex) {
       .notNullable()
       .defaultTo(knex.raw('now()'));
     table.timestamp('updated_at').notNullable();
-    table.string('name').notNullable();
-    table.string('email').unique().notNullable();
-    table.string('password').notNullable();
+    table.string('name'       ).notNullable();
+    table.string('email'      ).unique().notNullable();
+    table.string('password'   ).notNullable();
+    table.string('is_deleted' ).notNullable().defaultTo('false');
 
   });
 }

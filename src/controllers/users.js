@@ -44,9 +44,9 @@ export function fetchById(req, res, next) {
 export function create(req, res, next) {
   req.body.password = generateHash(req.body.password);
   userService
-    .createUser(req.body)
-    .then(data => res.status(HttpStatus.CREATED).json({ data }))
-    .catch(err => next(err));
+    .createUser( req.body )
+    .then( data => res.status(HttpStatus.CREATED).json({ data }) )
+    .catch( err => next(err) );
 }
 
 /**

@@ -20,6 +20,7 @@ export function up(knex) {
       .defaultTo('USER TASK');
     table.text('description');
     table.integer('user_id').unsigned();
+    table.string('is_deleted').notNullable().defaultTo('false');
     table.foreign('user_id').references('users.id')
       .onDelete('CASCADE');
 
